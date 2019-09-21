@@ -21,18 +21,26 @@ int main() {
 	//	it->next();
 	//}
 
-	//Queue<int> a{1, 2, 3};
-	//a.push(4);
-	//a.pop();
-	//a.pop();
-	//a.push(5);
-	//Reverser<int> reverser;
-	//a.accept(reverser);
-	//ReverseIterator<int> *rIt = a.createReverseIterator();
+	//Queue<char> a{ 'a', 'k', 'a', 'b', 'o', 's' };
+	//ReverseIterator<char> *rIt = a.createReverseIterator();
 	//while (!(rIt->isDone())) {
-	//	cout << rIt->currentItem() << endl;
+	//	cout << rIt->currentItem();
 	//	rIt->next();
 	//}
+	//cout << endl;
+
+	Queue<int> a{1, 2, 3};
+	a.push(4);
+	a.pop();
+	a.pop();
+	a.push(5);
+	Reverser<int> reverser;
+	a.accept(reverser);
+	ReverseIterator<int> *rIt = a.createReverseIterator();
+	while (!(rIt->isDone())) {
+		cout << rIt->currentItem() << endl;
+		rIt->next();
+	}
 
 	system("pause");
 
