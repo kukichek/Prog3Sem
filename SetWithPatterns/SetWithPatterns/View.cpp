@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "View.h"
 #define STR_SIZE 80
 
@@ -7,7 +8,11 @@ void View::UpdateEdit(const std::string &s) {
 }
 
 void View::DisplayError(const std::string &errorMsg) {
-	MessageBox(hErrorOutWnd_, errorMsg.c_str(), NULL, MB_OKCANCEL);
+	wchar_t *wcstring = new wchar_t[STR_SIZE];
+	size_t convertedChars = 0;
+	mbstowcs_s(&convertedChars, wcstring, STR_SIZE, errorMsg.c_str(), _TRUNCATE);
+
+	MessageBox(hErrorOutWnd_, wcstring, NULL, MB_OKCANCEL);
 }
 
 void View::SetHEditOut(HWND hEditOut) {

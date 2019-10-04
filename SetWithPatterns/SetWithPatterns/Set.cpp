@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "Set.h"
 
 Set::Set() {
