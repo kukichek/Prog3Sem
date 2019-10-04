@@ -1,6 +1,5 @@
 #pragma once
 #include <sstream>
-#include "Converter.h"
 
 template <typename T>
 std::string Converter(const char* spacer, T arg)
