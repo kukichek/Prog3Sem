@@ -2,14 +2,6 @@
 #include <sstream>
 
 template <typename T>
-std::string Converter(const char* spacer, T arg)
-{
-	std::stringstream converter;
-	converter << arg << spacer;
-	return converter.str();
-}
-
-template <typename T>
 std::string ToString(const char* spacer, T arg)
 {
 	std::stringstream converter;
@@ -20,6 +12,8 @@ std::string ToString(const char* spacer, T arg)
 template <typename T, typename ... Args>
 std::string ToString(const char* spacer, T arg, Args ... args)
 {
-	auto func = [&](const char* spacer, Args ... args) {return ToString(spacer, args...); };
-	return Converter(spacer, arg) + func(spacer, args...);
+	auto convert = [](const char* spacer, T arg) { std::stringstream converter;
+										 converter << arg << spacer; 
+										 return converter.str(); };
+	return convert(spacer, arg) + ToString(spacer, args...);
 }
