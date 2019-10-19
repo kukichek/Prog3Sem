@@ -354,3 +354,8 @@ MigrationBackup/
 *.vcxproj
 *.vcxproj.filters
 *.sln
+
+*.docx
+*.doc
+
+.idea
