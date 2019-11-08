@@ -3,11 +3,9 @@ package series;
 import java.sql.SQLInvalidAuthorizationSpecException;
 
 public final class Linear extends Series{
-    double a, b;
 
-    public Linear(double a, double b) {
-        this.a = a;
-        this.b = b;
+    public Linear() {
+        super();
     }
 
     @Override

@@ -5,6 +5,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 abstract public class Series {
+    protected double a, b;
+
+    protected Series() {
+        a = 0;
+        b = 0;
+    }
+
+    public void setCoefs(double a, double b) {
+        this.a = a;
+        this.b = b;
+    }
+
     abstract public double kthElement(int k) throws Exception;
     public double seriesSum(int k) throws Exception {
         float sum = 0;
