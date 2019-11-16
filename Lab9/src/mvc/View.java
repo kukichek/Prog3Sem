@@ -67,7 +67,7 @@ public class View extends JFrame {
 
         JLabel seriesTypeLabel = new JLabel("Choose type of series");
         JLabel setCoefficientsLabel = new JLabel("Set coefficients");
-        JLabel setKIndexLabel = new JLabel("Set index k");
+        JLabel setKIndexLabel = new JLabel("Set number of elements");
         JLabel setOutputFileLabel = new JLabel("Set output file (without extension)");
 
         ButtonGroup seriesTypeButtonGroup = new ButtonGroup();
@@ -76,9 +76,7 @@ public class View extends JFrame {
 
         linearRadioButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                controller.initializeLinear();
-            }
+            public void actionPerformed(ActionEvent actionEvent) { controller.initializeLinear(); }
         });
         exponentialRadioButton.addActionListener(new ActionListener() {
             @Override
@@ -111,6 +109,10 @@ public class View extends JFrame {
                 try {
                     if (kIndexTField.getText().equals("")) throw new NullPointerException();
                     k = Integer.valueOf(kIndexTField.getText());
+                    controller.setElementAmount(k);
+                }
+                catch (ClassNotFoundException exception) {
+                    showMessageDialog(null, exception.getMessage());
                 }
                 catch (NullPointerException exception) {
                     showMessageDialog(null, "You didn't enter index k, please, try again");
@@ -126,7 +128,7 @@ public class View extends JFrame {
                 try {
                     if (k == null) throw new ClassNotFoundException("You didn't enter the index k, enter please");
                     String pathName = fileNameTField.getText();
-                    controller.writeToFile(pathName, k);
+                    controller.writeToFile(pathName);
                 }
                 catch (ClassNotFoundException exception) {
                     showMessageDialog(null, exception.getMessage());
@@ -152,7 +154,7 @@ public class View extends JFrame {
                 catch (ClassNotFoundException exception) {
                     showMessageDialog(null, exception.getMessage());
                 }
-                catch(Exception exception) {
+                catch(NumberFormatException exception) {
                     showMessageDialog(null, "Uncorrect index k, please, enter again");
                 }
             }
@@ -162,14 +164,14 @@ public class View extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
                     if (k == null) throw new ClassNotFoundException("You didn't enter the index k, enter please");
-                    sumTField.setText(controller.sum(k));
+                    sumTField.setText(controller.sum());
                 }
                 catch (ClassNotFoundException exception) {
                     showMessageDialog(null, exception.getMessage());
                 }
-                catch(Exception exception) {
-                    showMessageDialog(null, "Uncorrect index k, please, enter again");
-                }
+//                catch(NumberFormatException exception) {
+//                    showMessageDialog(null, "Uncorrect index k, please, enter again");
+//                }
             }
         });
         firstKElemsButton.addActionListener(new ActionListener() {
@@ -177,14 +179,14 @@ public class View extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
                     if (k == null) throw new ClassNotFoundException("You didn't enter the index k, enter please");
-                    firstKElemsTField.setText(controller.firstKElements(k));
+                    firstKElemsTField.setText(controller.firstKElements());
                 }
                 catch (ClassNotFoundException exception) {
                     showMessageDialog(null, exception.getMessage());
                 }
-                catch(Exception exception) {
-                    showMessageDialog(null, "Uncorrect index k, please, enter again");
-                }
+//                catch(NumberFormatException exception) {
+//                    showMessageDialog(null, "Uncorrect index k, please, enter again");
+//                }
             }
         });
 
@@ -246,9 +248,9 @@ public class View extends JFrame {
         southButtons.add(firstKElemsButton, BorderLayout.SOUTH);
 
         southTextFields.setLayout(new BoxLayout(southTextFields, BoxLayout.Y_AXIS));
-        kthElementTField.setColumns(15);
-        sumTField.setColumns(15);
-        firstKElemsTField.setColumns(15);
+        kthElementTField.setColumns(30);
+        sumTField.setColumns(30);
+        firstKElemsTField.setColumns(30);
         kthElementTField.setEditable(false);
         sumTField.setEditable(false);
         firstKElemsTField.setEditable(false);

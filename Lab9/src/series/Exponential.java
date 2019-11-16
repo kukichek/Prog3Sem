@@ -7,8 +7,8 @@ final public class Exponential extends Series{
     }
 
     @Override
-    public double kthElement(int k) throws Exception {
-        if (k < 1) throw new Exception("Uncorrect index k");
+    public double kthElement(int k) throws NumberFormatException {
+        if (k < 1) throw new NumberFormatException();
         double kthElement = a;
         for (int i = 0; i < k - 1; ++i) {
             kthElement *= b;

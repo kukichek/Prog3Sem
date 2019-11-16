@@ -6,8 +6,6 @@ import series.Series;
 
 import java.io.IOException;
 
-import static javax.swing.JOptionPane.showMessageDialog;
-
 public class Controller {
     private Series model;
     private View view;
@@ -36,25 +34,31 @@ public class Controller {
         model.setCoefs(a, b);
     }
 
-    void writeToFile(String pathName, int k) throws NullPointerException, ClassNotFoundException, IOException, Exception{
+    void setElementAmount(int k) throws ClassNotFoundException {
+        if (model == null) throw new ClassNotFoundException("Choose, please, a type of series");
+
+        model.setElementAmount(k);
+    }
+
+    void writeToFile(String pathName) throws NullPointerException, ClassNotFoundException, IOException{
         if (pathName.equals("")) throw new NullPointerException();
         if (pathName.matches(".*[+=:;«,<>|/?*].*")) throw new IOException();
         if (model == null) throw new ClassNotFoundException("You didn't choose the type of series, please, choose one");
-        model.saveToFile(pathName, k);
+        model.saveToFile(pathName);
     }
 
-    String kthElement(int k) throws ClassNotFoundException, Exception {
+    String kthElement(int k) throws ClassNotFoundException, NumberFormatException {
         if (model == null) throw new ClassNotFoundException("You didn't choose the type of series, please, choose one");
         return Double.toString(model.kthElement(k));
     }
 
-    String sum(int k) throws ClassNotFoundException, Exception {
+    String sum() throws ClassNotFoundException {
         if (model == null) throw new ClassNotFoundException("You didn't choose the type of series, please, choose one");
-        return Double.toString(model.seriesSum(k));
+        return Double.toString(model.seriesSum());
     }
 
-    String firstKElements(int k) throws ClassNotFoundException, Exception {
+    String firstKElements() throws ClassNotFoundException {
         if (model == null) throw new ClassNotFoundException("You didn't choose the type of series, please, choose one");
-        return model.toString(k);
+        return model.toString();
     }
 }
