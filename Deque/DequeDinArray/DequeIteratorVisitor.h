@@ -4,7 +4,6 @@
 #include<cmath>
 #include<string>
 #include<algorithm>
-#include"MyException.h"
 
 template<class T>
 class Iterator;
@@ -114,13 +113,11 @@ void Deque<T>::clear() {
 
 template<class T>
 T Deque<T>::front() const {
-	//if (isEmpty()) throw MyException(std::string("Empty deque"), std::string("Queue::front()"));
 	return ptr[head_index];
 }
 
 template<class T>
 T Deque<T>::back() const {
-	//if (isEmpty()) throw MyException(std::string("Empty deque"), std::string("Queue::back()"));
 	return ptr[tail_index];
 }
 
@@ -172,9 +169,6 @@ void Deque<T>::pushBack(T new_item) {
 
 template<class T>
 T Deque<T>::popFront() {
-	//if (q_size == 0) {
-	//	throw MyException(std::string("Removal from the empty deque"), std::string("Queue::pop()"));
-	//}
 	q_size--;
 	if (q_size > 0) {
 		int temp_index = head_index;
@@ -187,9 +181,6 @@ T Deque<T>::popFront() {
 
 template<class T>
 T Deque<T>::popBack() {
-	//if (q_size == 0) {
-	//	throw MyException(std::string("Removal from the empty deque"), std::string("Queue::pop()"));
-	//}
 	q_size--;
 	if (q_size > 0) {
 		int temp_index = tail_index;
@@ -384,28 +375,29 @@ T& ReverseIterator<T>::currentItem() {
 
 template<class T>
 void Deque<T>::accept(Visitor<T> &visitor) {
-	visitor.visitDeque(*this);
+	Iterator<T> *it = createIterator();
+	while (!(it->isDone())) {
+		visitor.visitDeque(*it);
+		it->next();
+	}
 }
 
 template<class T>
 class Visitor {
 public:
-	virtual void visitDeque(Deque<T> &deque) = 0;
+	virtual void visitDeque(T el) = 0;
 };
 
 template<class T>
 class Printer : public Visitor<T> {
+private:
+	std::string spacer = ' ';
 public:
-	void visitDeque(Deque<T> &deque) override;
+	void visitDeque(T el) override;
 };
 
 template<class T>
-void Printer<T>::visitDeque(Deque<T> &deque) {
-	Iterator<T> *it = deque.createIterator();
-	while (!(it->isDone())) {
-		std::cout << it->currentItem() << ' ';
-		it->next();
-	}
-	std::cout << std::endl;
+void Printer<T>::visitDeque(T el) {
+	std::cout << el << spacer;
 }
 
