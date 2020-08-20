@@ -1,0 +1,6 @@
+Ford gasoline 7.8 1955 sedan
+BMW gasoline 6.5 1997 hatchback
+BMW diesel 8.3 2007 crossover
+Audi gasoline 6.4 2003 sedan
+BMW diesel 6.9 2007 coupe 
+Mercedes gasoline 8.5 2015 hatchback 

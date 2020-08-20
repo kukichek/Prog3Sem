@@ -1,0 +1,5 @@
+BMW diesel 12.8 2001 17 6
+Mercedes-Benz diesel 38.9 1992 55 8 
+Volvo gasoline 44.7 1992 100 6
+Mercedes-Benz diesel 36.7 2014 44 6
+Scania gasoline 28.3 2001 38 8

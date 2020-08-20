@@ -1,0 +1,26 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<incLamp>
+	<lamp producer="SomeOldReliableProducer" capacity="120">
+		<exploitTime>10000</exploitTime>
+	</lamp>
+
+	<lamp producer="Phillips" capacity="65">
+		<exploitTime>4000</exploitTime>
+	</lamp>
+
+	<lamp producer="LightInc" capacity="80">
+		<exploitTime>5500</exploitTime>
+	</lamp>
+
+	<lamp producer="Panasonic" capacity="140">
+		<exploitTime>8000</exploitTime>
+	</lamp>
+
+	<lamp producer="LightInc" capacity="48">
+		<exploitTime>6000</exploitTime>
+	</lamp>
+
+	<lamp producer="Phillips" capacity="80">
+		<exploitTime>7500</exploitTime>
+	</lamp>
+</incLamp>

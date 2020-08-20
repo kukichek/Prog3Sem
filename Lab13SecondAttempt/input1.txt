@@ -1,0 +1,6 @@
+1823091 Kamenka 3 Programming 10
+1823091 Haychuk 3 Programming 2
+1823153 Mechik 3 NumericalAnalysis 6
+1823153 Pun'ko 3 Programming 9
+1823121 Kustova 3 Economics 3
+1823121 Lyublina 3 NumericalAnalysis 7
